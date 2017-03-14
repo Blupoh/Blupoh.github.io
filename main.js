@@ -183,8 +183,8 @@ Thruster2.prototype.update = function () {
 }
 
 function Shock(game, spritesheet) {
-	this.animation = new Animation(spritesheet, [0,0] , 256, 256, 4, .10, 9, true, 1);
-	this.x = 300;
+    this.animation = new Animation(spritesheet, [0,0] , 256, 256, 4, .10, 9, true, 1);
+    this.x = 300;
     this.y = 0;
     this.speed = 100;
     this.game = game;
