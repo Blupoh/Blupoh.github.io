@@ -95,22 +95,16 @@ Background.prototype.update = function () {
 };
 
 function shoot() {
-    //gameEngine.addEntity(new Shot(gameEngine, AM.getAsset("./img/raid.png")));
-	var shot = new Shot(gameEngine, AM.getAsset("./img/raid.png"));
-	//shot.x = 300;
-	//shot.y = 300;
-	shot.speed = 100;
-	gameEngine.addEntity(shot);
-	//shots.push(shot);
+    
 	console.log('shot');
 }
 	
 function Shot(game, spritesheet) {
-this.animation = new Animation(spritesheet, [440,125] , 25, 25, 1, .01, 1, false, 1);
-	this.ctx = game.ctx;
-	//this.speed = 100;
-	this.x = 400;
-	this.y = 400;
+this.animation = new Animation(spritesheet, [440,125] , 1, 1, 1, .01, 1, false, 1);
+	
+	this.speed = 100;
+	this.x = 100;
+	this.y = 100;
 	this.game = game;
 	this.ctx = game.ctx;
 	//Entity.call(this,game,0,250);
@@ -129,26 +123,6 @@ Shot.prototype.update = function () {
 	Entity.prototype.update.call(this);
 }
 
-
-
-// function MushroomDude(game, spritesheet) {
-    // this.animation = new Animation(spritesheet, [0,0] ,189, 230, 5, 0.10, 14, true, 1);
-    // this.x = 0;
-    // this.y = 0;
-    // this.speed = 100;
-    // this.game = game;
-    // this.ctx = game.ctx;
-// }
-
-// MushroomDude.prototype.draw = function () {
-    // this.animation.drawFrame2(this.game.clockTick, this.ctx, this.x, this.y);
-// }
-
-// MushroomDude.prototype.update = function () {
-    // if (this.animation.elapsedTime < this.animation.totalTime * 8 / 14)
-        // this.x += this.game.clockTick * this.speed;
-    // if (this.x > 800) this.x = -230;
-// }
 
 function Fighter(game, spritesheet) {
 	this.animation = new Animation(spritesheet, [-1,30] ,34, 45, 11, 0.50, 11, true, 1);
@@ -210,7 +184,7 @@ Thruster2.prototype.update = function () {
 
 function Shock(game, spritesheet) {
 	this.animation = new Animation(spritesheet, [0,0] , 256, 256, 4, .10, 9, true, 1);
-	this.x = 0;
+	this.x = 300;
     this.y = 0;
     this.speed = 100;
     this.game = game;
@@ -227,9 +201,6 @@ Shock.prototype.update = function () {
 }
 
 
-
-//AM.queueDownload("./img/mushroomdude.png");
-
 AM.queueDownload("./img/coast.png");
 AM.queueDownload("./img/raid.png");
 AM.queueDownload("./img/bomb1.png");
@@ -243,15 +214,13 @@ AM.downloadAll(function () {
     gameEngine.start();
 
     gameEngine.addEntity(new Background(gameEngine, AM.getAsset("./img/coast.png")));
-    //gameEngine.addEntity(new MushroomDude(gameEngine, AM.getAsset("./img/mushroomdude.png")));
+    
 	gameEngine.addEntity(new Shock(gameEngine, AM.getAsset("./img/bomb1.png")));
     gameEngine.addEntity(new Shot(gameEngine, AM.getAsset("./img/raid.png")));
 	
 	gameEngine.addEntity(new Thruster(gameEngine, AM.getAsset("./img/raid.png")));
 	gameEngine.addEntity(new Thruster2(gameEngine, AM.getAsset("./img/raid.png")));
 	gameEngine.addEntity(new Fighter(gameEngine, AM.getAsset("./img/raid.png")));
-	
-	//shoot();
-	//Shot = gameEngine.entities;
+
     console.log("All Done!");
 });
